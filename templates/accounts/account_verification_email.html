@@ -1,0 +1,8 @@
+{% autoescape off %}
+Hi {{user.first_name}},
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+If you think its not you Ignore this email.
+
+
+{% endautoescape %}
