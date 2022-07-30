@@ -5,7 +5,7 @@ from django.contrib import messages
 from accounts.models import Account
 
 from category.models import Category
-from orders.models import Payment
+from orders.models import Order, Payment
 from store.models import Product
 
 
@@ -38,6 +38,64 @@ def adm_products(request):
     return render(request, 'adm_products.html',tbl)
 
 
+
+def adm_prd_add(request,id):
+    data = Product.objects.get(id=id)
+    if request.method == 'POST':
+        data.product_name = request.POST['product_name']
+        data.slug = request.POST['slug']
+        data.description = request.POST['description']
+        data.price = request.POST['price']
+        data.stock = request.POST['stock']
+
+
+
+        data.save()
+        return redirect('adm_products')
+
+
+
+    tbl = {
+        "data": data
+    }
+
+    return render(request, 'adm_prod_edit.html',tbl)
+
+        
+
+def adm_prd_edit(request,id):
+
+    data = Product.objects.get(id=id)
+    if request.method == 'POST':
+        data.product_name = request.POST['product_name']
+        data.slug = request.POST['slug']
+        data.description = request.POST['description']
+        data.price = request.POST['price']
+        data.stock = request.POST['stock']
+
+
+
+        data.save()
+        return redirect('adm_products')
+
+
+
+    tbl = {
+        "data": data
+    }
+
+    return render(request, 'adm_prod_edit.html',tbl)
+
+def adm_prd_dlt(request,id):
+    pro = Product.objects.get(id=id)
+    pro.delete()
+    return redirect('adm_products')
+
+
+
+
+
+
 def adm_payments(request):
     data = Payment.objects.all()
     tbl = {
@@ -58,7 +116,7 @@ def adm_user_details(request):
 
 
 def adm_orders(request):
-    data = Account.objects.all()
+    data = Payment.objects.all()
     tbl = {
         "details": data
     }
@@ -83,8 +141,23 @@ def adm_add(request,id):
 
     return render(request, 'adm_categories_edit.html',tbl)
 
-def adm_edit(request):
-    pass
+def adm_edit(request,id):
+    data = Category.objects.get(id=id)
+    if request.method == 'POST':
+        data.category_name = request.POST['category_name']
+        data.slug = request.POST['slug']
+        data.description = request.POST['description']
+        data.save()
+        return redirect('adm_categories')
+
+
+
+    tbl = {
+        "data": data
+    }
+
+    return render(request, 'adm_categories_edit.html',tbl)
+    
 
 def adm_delete(request,id):
     cat = Category.objects.get(id=id)
