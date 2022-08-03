@@ -210,17 +210,7 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
-                </div>
-              </div>
+            
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -292,9 +282,9 @@
                       <div class="row justify-content-center">
                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
           
-                          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add/Edit Products</p>
+                          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit Products</p>
           
-                          <form action="{% url 'adm_prd_add' data.id %}" method="post">
+                          <form action="{% url 'adm_prd_edit' data.id %}" method="post">
                             {%csrf_token%}
                             <div class="d-flex flex-row align-items-center mb-2">
     
@@ -344,14 +334,7 @@
     
     
     
-                            <div class="d-flex flex-row align-items-center mb-2">
-                              
-                                <div class="form-outline flex-fill mb-0">
-                                    <input type="text" class="form-control"
-                                        name="username" value="{{ data.images }}"/>
-                                    <label class="form-label">Edit Image</label>
-                                </div>
-                            </div>
+                            
     
                             <div class="d-flex flex-row align-items-center mb-2">
                               

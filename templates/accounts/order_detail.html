@@ -8,16 +8,6 @@
 
 
 
-<div class="container" style="margin-top: 50px;">
-    <center><i class="fas fa-check-circle" style="font-size: 72px;margin-bottom: 20px;color: #28A745;"></i></center>
-    <h2 class="text-center">Payment Successful</h2>
-	<br>
-	<div class="text-center">
-		<a href="{% url 'store' %}" class="btn btn-success">Shop more</a>
-	</div>
-    <br
-    >
-</div>
 
 <div class="container" style="margin: 0 auto;width: 50%;padding: 50px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
     <div class="row invoice row-printable">
@@ -51,10 +41,10 @@
                             <div class="invoice-details mt25">
                                 <div class="well">
                                     <ul class="list-unstyled mb0">
-                                        <li><strong>Order</strong> {{order_number}}</li>
-                                        <li><strong>Transaction</strong> {{payment_id}}</li>
+                                        <li><strong>Order:</strong> {{order.order_number}}</li>
+                                        <li><strong>Transaction: </strong> {{order.payment.payment_id}}</li>
                                         <li><strong>Order Date:</strong> {{order.created_at}}</li>
-                                        <li><strong>Status:</strong>{{payment.status}}</li>
+                                        <li><strong>Status:</strong>{{order.payment.status}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -70,7 +60,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                         {%for i in ordered_products%}
+                                         {%for i in order_detail%}
                                             <tr>
                                                 <td>{{i.product.product_name}}</td>
                                                 <td class="text-center">{{i.quantity}}</td>
@@ -81,7 +71,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th colspan="2" class="text-right">Sub Total:</th>
-                                                <th class="text-center">{{subtotal}}</th>
+                                                <th class="text-center">{{sub_total}}</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-right">GST:</th>
@@ -96,9 +86,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="invoice-footer mt25">
-                                <p class="text-center">Thank you for shopping with us!</p>
-                            </div>
+                            
                         </div>
                         <!-- col-lg-12 end here -->
                     </div>

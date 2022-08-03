@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 
 from carts.models import Cart, CartItem
 from carts.views import _cart_id
-from orders.models import Order
+from orders.models import Order, OrderProduct
 
 from .models import Account
 from .forms import RegistrationForm
@@ -145,10 +145,26 @@ def send_otp(mobile,otp):
     res=conn.getresponse()
     data=res.read()
 
+@login_required(login_url='login')
 def my_orders(request):
     orders=Order.objects.filter(user=request.user,is_ordered=True).order_by('-created_at')
     context = {'orders':orders}
     return render(request,'accounts/my_orders.html',context)
+
+@login_required(login_url='login')
+def order_detail(request,order_id):
+    order_detail= OrderProduct.objects.filter(order__order_number=order_id)
+    order= Order.objects.get(order_number=order_id)
+    sub_total =0
+    for i in order_detail:
+        sub_total += i.product_price * i.quantity
+    context = {
+        'order_detail':order_detail,
+        'order':order,
+        'sub_total':sub_total,
+        }
+    return render(request,'accounts/order_detail.html',context)
+
 
 
 

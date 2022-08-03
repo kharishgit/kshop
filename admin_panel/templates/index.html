@@ -356,7 +356,7 @@
                             </div>
                           </div>
                           <span class="fw-semibold d-block mb-1">Profit</span>
-                          <h3 class="card-title mb-2">$12,628</h3>
+                          <h3 class="card-title mb-2">{{income}}</h3>
                           <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
                         </div>
                       </div>
@@ -389,8 +389,8 @@
                               </div>
                             </div>
                           </div>
-                          <span>Sales</span>
-                          <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                          <span>Orders</span>
+                          <h3 class="card-title text-nowrap mb-1">{{payment}}</h3>
                           <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
                         </div>
                       </div>
@@ -403,10 +403,14 @@
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
+
                         <div id="totalRevenueChart" class="px-2"></div>
+                        <h3 class="card-title mb-2">{{sum}}</h3>
+
                       </div>
                       <div class="col-md-4">
                         <div class="card-body">
+
                           <div class="text-center">
                             <div class="dropdown">
                               <button
@@ -482,7 +486,7 @@
                             </div>
                           </div>
                           <span class="d-block mb-1">Payments</span>
-                          <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+                          <h3 class="card-title text-nowrap mb-2">{{payment}}</h3>
                           <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
                         </div>
                       </div>
@@ -512,7 +516,7 @@
                             </div>
                           </div>
                           <span class="fw-semibold d-block mb-1">Transactions</span>
-                          <h3 class="card-title mb-2">$14,857</h3>
+                          <h3 class="card-title mb-2">{{sum}}</h3>
                           <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
                         </div>
                       </div>
@@ -525,14 +529,14 @@
                           <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                             <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                               <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                                <h5 class="text-nowrap mb-2"></h5>
+                                <span class="badge bg-label-warning rounded-pill"></span>
                               </div>
                               <div class="mt-sm-auto">
                                 <small class="text-success text-nowrap fw-semibold"
-                                  ><i class="bx bx-chevron-up"></i> 68.2%</small
+                                  ><i class="bx bx-chevron-up"></i></small
                                 >
-                                <h3 class="mb-0">$84,686k</h3>
+                                <h3 class="mb-0"></h3>
                               </div>
                             </div>
                             <div id="profileReportChart"></div>
@@ -573,13 +577,13 @@
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex flex-column align-items-center gap-1">
-                          <h2 class="mb-2">8,258</h2>
-                          <span>Total Orders</span>
+                          <h2 class="mb-2">{{payment}}</h2>
+                          <span>Remaining Stock</span>
                         </div>
                         <div id="orderStatisticsChart"></div>
                       </div>
                       <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
+                        {% comment %} <li class="d-flex mb-4 pb-1">
                           <div class="avatar flex-shrink-0 me-3">
                             <span class="avatar-initial rounded bg-label-primary"
                               ><i class="bx bx-mobile-alt"></i
@@ -587,42 +591,20 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Electronic</h6>
-                              <small class="text-muted">Mobile, Earbuds, TV</small>
+                              <h6 class="mb-0">Jeans</h6>
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">82.5k</small>
+                              
+                              <small class="fw-semibold">{{stk}}</small>
+                              
                             </div>
                           </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Fashion</h6>
-                              <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                            </div>
-                            <div class="user-progress">
-                              <small class="fw-semibold">23.8k</small>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <h6 class="mb-0">Decor</h6>
-                              <small class="text-muted">Fine Art, Dining</small>
-                            </div>
-                            <div class="user-progress">
-                              <small class="fw-semibold">849k</small>
-                            </div>
-                          </div>
-                        </li>
+                        </li>                    {% endcomment %}
+                        
+                        
+                        
+                          
+                        {% for cat in stk %}
                         <li class="d-flex">
                           <div class="avatar flex-shrink-0 me-3">
                             <span class="avatar-initial rounded bg-label-secondary"
@@ -631,14 +613,17 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Sports</h6>
-                              <small class="text-muted">Football, Cricket Kit</small>
+                           
+                              <h6 class="mb-0">{{cat.category__category_name}}</h6>
+                           
                             </div>
                             <div class="user-progress">
-                              <small class="fw-semibold">99</small>
+                              <small class="fw-semibold">{{cat.sum}}</small>
                             </div>
                           </div>
+                          
                         </li>
+                        {% endfor %}
                       </ul>
                     </div>
                   </div>
@@ -706,6 +691,9 @@
                 </div>
                 <!--/ Expense Overview -->
 
+
+
+
                 <!-- Transactions -->
                 <div class="col-md-6 col-lg-4 order-2 mb-4">
                   <div class="card h-100">
@@ -737,12 +725,12 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Paypal</small>
+                              <small class="text-muted d-block mb-1">Razor pay</small>
                               <h6 class="mb-0">Send money</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+82.6</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 class="mb-0">{{sum}}</h6>
+                              <span class="text-muted">RS</span>
                             </div>
                           </div>
                         </li>
@@ -756,8 +744,8 @@
                               <h6 class="mb-0">Mac'D</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+270.69</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 class="mb-0">0</h6>
+                              <span class="text-muted">RS</span>
                             </div>
                           </div>
                         </li>
@@ -771,41 +759,13 @@
                               <h6 class="mb-0">Refund</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+637.91</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 class="mb-0">0</h6>
+                              <span class="text-muted">Rs</span>
                             </div>
                           </div>
                         </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="avatar flex-shrink-0 me-3">
-                            <img src="{%static 'admin_panel/./assets/img/icons/unicons/cc-success.png' %}" alt="User" class="rounded" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <small class="text-muted d-block mb-1">Credit Card</small>
-                              <h6 class="mb-0">Ordered Food</h6>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">-838.71</h6>
-                              <span class="text-muted">USD</span>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                          <div class="avatar flex-shrink-0 me-3">
-                            <img src="{% static 'admin_panel/./assets/img/icons/unicons/wallet.png' %}" alt="User" class="rounded" />
-                          </div>
-                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                              <small class="text-muted d-block mb-1">Wallet</small>
-                              <h6 class="mb-0">Starbucks</h6>
-                            </div>
-                            <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">+203.33</h6>
-                              <span class="text-muted">USD</span>
-                            </div>
-                          </div>
-                        </li>
+                        
+                        
                         <li class="d-flex">
                           <div class="avatar flex-shrink-0 me-3">
                             <img src="{%static 'admin_panel/./assets/img/icons/unicons/cc-warning.png' %}" alt="User" class="rounded" />
@@ -813,11 +773,11 @@
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
                               <small class="text-muted d-block mb-1">Mastercard</small>
-                              <h6 class="mb-0">Ordered Food</h6>
+                              <h6 class="mb-0">Simply Click</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
-                              <h6 class="mb-0">-92.45</h6>
-                              <span class="text-muted">USD</span>
+                              <h6 class="mb-0">0</h6>
+                              <span class="text-muted">Rs</span>
                             </div>
                           </div>
                         </li>

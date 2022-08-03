@@ -9,13 +9,12 @@ urlpatterns =[
     path('adm_payments/',views.adm_payments,name='adm_payments'),
     path('adm_user_details/',views.adm_user_details,name='adm_user_details'),
     path('adm_orders/',views.adm_orders,name='adm_orders'),
-    path('adm_add/<int:id>', views.adm_add,name='adm_add'),
+    path('adm_add/', views.adm_add,name='adm_add'),
     path('adm_delete/<int:id>', views.adm_delete,name='adm_delete'),
     path('adm_edit/<int:id>', views.adm_edit,name='adm_edit'),
     path('adm_change_status/<int:id>', views.adm_change_status,name='adm_change_status'),
-    path('adm_prd_add/<int:id>', views.adm_prd_add,name='adm_prd_add'),
+    path('adm_prd_add/', views.adm_prd_add,name='adm_prd_add'),
     path('adm_prd_edit/<int:id>', views.adm_prd_edit,name='adm_prd_edit'),
     path('adm_prd_dlt/<int:id>', views.adm_prd_dlt,name='adm_prd_dlt'),
-
 
 ]

@@ -145,7 +145,7 @@
             <li class="menu-item active">
               <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Categories</div>
+                <div data-i18n="Analytics">Products</div>
               </a>
             </li>
 
@@ -155,6 +155,7 @@
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Admin Panel</div>
               </a>
+              
 
               <ul class="menu-sub">
                 <li class="menu-item">
@@ -177,11 +178,7 @@
                     <div data-i18n="Fluid">User Details</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="{% url 'adm_orders' %}" class="menu-link">
-                    <div data-i18n="Blank">Orders</div>
-                  </a>
-                </li>
+                
               </ul>
             </li>
 
@@ -210,6 +207,15 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
+              <form action="{% url 'adm_products' %}" class="d-flex" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                <button class="btn btn-outline-success" type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 50 50" width="24px" height="24px">
+                    <path
+                      d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z" />
+                  </svg>
+                  </i></button>
+              </form>
               
               <!-- /Search -->
 
@@ -279,11 +285,13 @@
                 <td style="color:red;"><b>Slug</b></td>
                 <td style="color:red;"><b>Description</b></td>
                 <td style="color:red;"><b>Price</b></td>
-                <td style="color:red;"><b>image</b></td>
                 <td style="color:red;"><b>Stock</b></td>
                 <td style="color:red;"><b>Category Id</b></td>
                 <td style="color:red;"><b>Created Date</b></td>
                 <td style="color:red;"><b>Modified Date</b></td>
+                <td <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i><a href="{% url 'adm_prd_add'%}" style="color:white">Add Product</a> </button></td>
+
+                
 
 
                 
@@ -296,7 +304,6 @@
                     <td> {{ det.description}}</td>
                     <td> {{ det.price}}</td>
 
-                    <td>{{ det.images}}</td>
                     <td> {{ det.stock}}</td>
                     <td> {{ det.category_id}}</td>
                     <td> {{ det.created_date}}</td>
@@ -311,7 +318,6 @@
 
                 
                     <td>
-                      <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i><a href="{% url 'adm_prd_add' det.id %}" style="color:white">Add</a> </button>
                       <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i><a href="{% url 'adm_prd_edit' det.id %}" style="color:white">Edit</a> </button>
                       <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i><a href="{% url 'adm_prd_dlt' det.id %}" style="color:white">Delete</a> </button>
 
@@ -328,6 +334,38 @@
 
           <!-- /Table Close -->
 
+
+                       <!--  Paginator -->
+
+    <nav class="mt-4 bg-info" aria-label="Page navigation sample">
+      {% if details.has_other_pages %} 
+          <ul class="pagination">
+              {% if details.has_previous %}
+              <li class="page-item "><a class="page-link" href="?page={{details.previous_page_number}}">Previous</a></li>
+              {% else %}
+              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+              {%endif%}
+
+              {%for i in details.paginator.page_range%}
+                  {% if details.number == i %}
+                      <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                  {%else%}
+                      <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                  {%endif%}
+              {%endfor%}
+              {%if details.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{details.next_page_number}}">Next</a></li>
+              {%else%}
+              <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+
+              {% endif %}
+          </ul>
+      {% endif %}
+  </nav>
+
+
+
+    <!-- / Paginator -->
           
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
